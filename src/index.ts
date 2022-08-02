@@ -4,7 +4,6 @@ import { GraphQLDateTime } from "graphql-iso-date";
 import { AccountResolvers, AccountSchema } from "./account";
 import { TransactionResolvers, TransactionSchema } from "./transaction";
 import { CategoryResolvers, CategorySchema } from "./category";
-import { typeDefs } from "./schema";
 
 const port = process.env.PORT || 9090;
 
@@ -17,12 +16,7 @@ const server = new ApolloServer({
       DateTime: GraphQLDateTime,
     },
   ]),
-  typeDefs: mergeTypeDefs([
-    typeDefs,
-    AccountSchema,
-    CategorySchema,
-    TransactionSchema,
-  ]),
+  typeDefs: mergeTypeDefs([AccountSchema, CategorySchema, TransactionSchema]),
 });
 
 server.listen({ port }, () =>

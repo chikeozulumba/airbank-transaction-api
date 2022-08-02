@@ -1,8 +1,6 @@
 import { prisma } from "../config";
-import { TransactionMutation } from "./mutation";
 import { TransactionQuery } from "./query";
 
-export * from "./mutation";
 export * from "./query";
 export { default as TransactionSchema } from "./schema";
 
@@ -19,5 +17,4 @@ export const Transaction = {
 export const TransactionResolvers = {
   Transaction,
   Query: TransactionQuery,
-  Mutation: TransactionMutation,
 };

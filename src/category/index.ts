@@ -1,7 +1,5 @@
-import { CategoryMutation } from "./mutation";
 import { CategoryQuery } from "./query";
 
-export * from "./mutation";
 export * from "./query";
 export { default as CategorySchema } from "./schema";
 
@@ -16,5 +14,4 @@ export const Category = {
 export const CategoryResolvers = {
   Category,
   Query: CategoryQuery,
-  Mutation: CategoryMutation,
 };
