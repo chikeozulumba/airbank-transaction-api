@@ -93,8 +93,6 @@ export const TransactionQuery = {
       where["date"] = dateFilter;
     }
 
-    console.log(where);
-
     return {
       count: await prisma.transaction.count({
         where,
