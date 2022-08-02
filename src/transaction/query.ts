@@ -66,7 +66,12 @@ export const TransactionQuery = {
   },
   transactionsCount: async (
     parent: unknown,
-    { categoryId, accountId }: QueryParameters & TransactionQueryParameters
+    {
+      categoryId,
+      accountId,
+      startDate,
+      endDate,
+    }: QueryParameters & TransactionQueryParameters
   ): Promise<{ count: number }> => {
     const where = {};
     if (categoryId && !accountId) {
@@ -79,6 +84,16 @@ export const TransactionQuery = {
     if (accountId && categoryId) {
       where["OR"] = [{ accountId: accountId }, { categoryId: categoryId }];
     }
+
+    const dateFilter = {};
+    if (startDate && endDate) {
+      dateFilter["lte"] = new Date(endDate);
+      dateFilter["gte"] = new Date(startDate);
+
+      where["date"] = dateFilter;
+    }
+
+    console.log(where);
 
     return {
       count: await prisma.transaction.count({

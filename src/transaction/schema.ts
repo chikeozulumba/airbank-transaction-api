@@ -37,6 +37,11 @@ export default gql`
       endDate: String
       relations: [TransactionRelation!]
     ): [Transaction!]!
-    transactionsCount(accountId: String, categoryId: String): TransactionCount!
+    transactionsCount(
+      startDate: String
+      endDate: String
+      accountId: String
+      categoryId: String
+    ): TransactionCount!
   }
 `;
