@@ -4,3 +4,5 @@ target
 dist
 .env
 yarn-error.log
+prisma/data
+data
